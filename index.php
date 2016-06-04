@@ -3,7 +3,7 @@
 //Function to check file size
 function find_filesize($file)
 {
-  //Check OS is Windows
+	//Check OS is Windows
 	if(substr(PHP_OS, 0, 3) == "WIN")
 	{
 		//Setup for array
@@ -30,7 +30,7 @@ function find_filesize($file)
 //Usage : find_filesize("path");
 //Example :
 echo "File size is : ".find_filesize("D:\Server\movie.mp4")."";
-
+//Set path
 $pathDest = "D:\Server\movie.mp4";
 echo "File size is : ".find_filesize($pathDest)."";
 
@@ -43,6 +43,7 @@ echo "File size is : ".find_filesize($pathDest)."";
 //Set path
 $pathDest = "D:\Server\movie.mp4";
 
+//Check OS is Windows
 if(substr(PHP_OS, 0, 3) == "WIN")
 {
 	//Setup for array

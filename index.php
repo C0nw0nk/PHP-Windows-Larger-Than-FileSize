@@ -6,21 +6,23 @@ function find_filesize($file)
   //Check OS is Windows
 	if(substr(PHP_OS, 0, 3) == "WIN")
 	{
-	  //Exec windows command line
+		//Setup for array
+		$output = array(); //This is not needed but i like to prepare code for array storage
+		//Exec windows command line
 		exec('for %I in ("'.$file.'") do @echo %~zI', $output);
 		//Array output
 		$return = $output[0];
+		//Incase the path or directory does not exist make the size output 0
+		if (!ctype_digit($return))
+		{
+			//Make file size 0
+			$return = 0;
+		}
 	}
 	else //Else the OS was not Windows
 	{
-	  //Use php built in function
+		//Use php built in function
 		$return = filesize($file);
-	}
-	//Incase the path or directory does not exist make the size output 0
-	if (!ctype_digit($return))
-	{
-	  //Make file size 0
-		$return = 0;
 	}
 	return $return;
 }
@@ -43,8 +45,12 @@ $pathDest = "D:\Server\movie.mp4";
 
 if(substr(PHP_OS, 0, 3) == "WIN")
 {
-exec('for %I in ("'.$pathDest.'") do @echo %~zI', $return);
-echo $return[0];
+	//Setup for array
+	$return = array(); //This is not needed but i like to prepare code for array storage
+	//Exec windows command line
+	exec('for %I in ("'.$pathDest.'") do @echo %~zI', $return);
+	//Echo how many bytes the file has.
+	echo $return[0];
 }
 
 ?>

@@ -4,7 +4,7 @@
 function find_filesize($file)
 {
 	//Check OS is Windows
-	if(substr(PHP_OS, 0, 3) == "WIN")
+	if(substr(PHP_OS, 0, 3) == "WIN" && strtok(phpversion(),'.') < 7)
 	{
 		//Setup for array
 		$output = array(); //This is not needed but i like to prepare code for array storage

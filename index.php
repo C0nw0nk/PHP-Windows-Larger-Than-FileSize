@@ -3,7 +3,7 @@
 //Function to check file size
 function find_filesize($file)
 {
-	//Check OS is Windows
+	//Check OS is Windows and PHP version is less than 7 (In PHP 7 on Windows the design limitation is fixed.)
 	if(substr(PHP_OS, 0, 3) == "WIN" && strtok(phpversion(),'.') < 7)
 	{
 		//Setup for array
@@ -43,8 +43,8 @@ echo "File size is : ".find_filesize($pathDest)."";
 //Set path
 $pathDest = "D:\Server\movie.mp4";
 
-//Check OS is Windows
-if(substr(PHP_OS, 0, 3) == "WIN")
+//Check OS is Windows and PHP version is less than 7 (In PHP 7 on Windows the design limitation is fixed.)
+if(substr(PHP_OS, 0, 3) == "WIN" && strtok(phpversion(),'.') < 7)
 {
 	//Setup for array
 	$return = array(); //This is not needed but i like to prepare code for array storage
